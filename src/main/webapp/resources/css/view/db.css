@@ -1,0 +1,49 @@
+/* 기본 설정  */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.main-dsbd-img {
+	width: 75%;
+}
+
+#contentAreaWrap {
+	width: 100%;
+}
+
+.content {
+	flex: 1;
+	padding: 0.6rem;
+}
+
+.title {
+	height: 3.45rem;
+	z-index: 999;
+	padding-top: 0.9rem;
+	padding-left: 3.5rem;
+	word-spacing: -0.11em;
+	letter-spacing: 0em;
+	/* background: #293347; */
+	font-family: 'Pretendard-SemiBold';
+}
+
+.title span {
+	font-size: 1.05rem;
+	color: #FFFFFF;
+}
+
+.title .timebox {
+	display: flex;
+	float: right;
+	padding-right: 3.95rem;
+	column-gap: 2.6rem;
+	letter-spacing: 0.06em;
+}
+
+.title .timebox .date {
+	letter-spacing: 0.1em;
+}

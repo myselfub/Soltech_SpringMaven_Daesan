@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RO(SW,BW)</title>
+<style>
+	.data-box .values .value .tit{min-width: 185px; text-wrap:wrap;}
+	.data-box .values .value .value-arr{display: flex; column-gap: 5px; width: 90%}
+</style>
+</head>
+<body>
+	<div class="main-contents-grid1" style="height: 100%; row-gap: 5px;">
+		<div class="main-contents-grid2" style="width: 100%; height: 45%; flex: 1 1 0;" >
+			<div class="data-box" style="flex-basis: 8%;">
+				<div class="title">전력 현황</div>
+				<div class="values">
+					<div class="value">
+						<p class="tit">실시간</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="RT_POWER">-</span>
+							<p class="unit">KW</p>
+						</div>
+
+					</div>
+					<div class="value">
+						<p class="tit">
+							<span>최대
+								<span id="maxTime">-</span>
+							</span>
+						</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="MAX_POWER">-</span>
+							<p class="unit">KW</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">소비량</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="USG_POWER">-</span>
+							<p class="unit">MWh</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">소비요금</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="PRC_POWER">-</span>
+							<p class="unit">원</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 45%;">
+				<div class="title">SWRO 주요 현황</div>
+				<div class="values">
+					<div class="value">
+						<p class="tit"></p>
+						<div class="value-arr">
+							<span class="val" id="">#1</span>
+							<span class="val" id="">#2</span>
+							<span class="val" id="">#3</span>
+							<span class="val" id="">#4</span>
+							<span class="val" id="">#5</span>
+							<span class="val" id="">#6</span>
+						</div>
+
+					</div>
+					<div class="value">
+						<p class="tit">HPP 압력 (kg/cm²)</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.PIT418S.F_CV" id="PIT418S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT428S.F_CV" id="PIT428S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT438S.F_CV" id="PIT438S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT448S.F_CV" id="PIT448S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT458S.F_CV" id="PIT458S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT468S.F_CV" id="PIT468S">-</span>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">SWRO 압력 (kg/cm²)</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.PIT411S.F_CV" id="PIT411S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT421S.F_CV" id="PIT421S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT431S.F_CV" id="PIT431S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT441S.F_CV" id="PIT441S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT451S.F_CV" id="PIT451S">-</span>
+							<span class="val" data-tag="CDSWSS.PIT461S.F_CV" id="PIT461S">-</span>
+						</div>
+					</div>
+					<div class="value img-item">
+						<p class="tit">SWRO유입밸브</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.M422A_FO_STS.F_CV" id="M422A"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M422B_FO_STS.F_CV" id="M422B"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M422C_FO_STS.F_CV" id="M422C"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M422D_FO_STS.F_CV" id="M422D"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M422E_FO_STS.F_CV" id="M422E"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M422F_FO_STS.F_CV" id="M422F"><img class="on-img"></span>
+						</div>
+					</div>
+					<div class="value img-item">
+						<p class="tit">고압 펌프</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.M403A_RUN_STS.F_CV" id="M403A"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M403B_RUN_STS.F_CV" id="M403B"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M403C_RUN_STS.F_CV" id="M403C"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M403D_RUN_STS.F_CV" id="M403D"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M403E_RUN_STS.F_CV" id="M403E"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M403F_RUN_STS.F_CV" id="M403F"><img class="on-img"></span>
+						</div>
+					</div>
+					<div class="value img-item">
+						<p class="tit">부스터 펌프</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.M404A_RUN_STS.F_CV" id="M404A"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M404B_RUN_STS.F_CV" id="M404B"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M404C_RUN_STS.F_CV" id="M404C"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M404D_RUN_STS.F_CV" id="M404D"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M404E_RUN_STS.F_CV" id="M404E"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M404F_RUN_STS.F_CV" id="M404F"><img class="on-img"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 45%;">
+				<div class="title">BWRO 주요 현황</div>
+				<div class="values">
+					<div class="value">
+						<p class="tit"></p>
+						<div class="value-arr">
+							<span class="val" id="">#1</span>
+							<span class="val" id="">#2</span>
+							<span class="val" id="">#3</span>
+							<span class="val" id="">#4</span>
+							<span class="val" id="">#5</span>
+							<span class="val" id="">#6</span>
+						</div>
+
+					</div>
+					<div class="value">
+						<p class="tit">유입 압력 (kg/cm²)</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.PIT411B.F_CV" id="PIT411B">-</span>
+							<span class="val" data-tag="CDSWSS.PIT421B.F_CV" id="PIT421B">-</span>
+							<span class="val" data-tag="CDSWSS.PIT431B.F_CV" id="PIT431B">-</span>
+							<span class="val" data-tag="CDSWSS.PIT441B.F_CV" id="PIT441B">-</span>
+							<span class="val" data-tag="CDSWSS.PIT451B.F_CV" id="PIT451B">-</span>
+							<span class="val" data-tag="CDSWSS.PIT461B.F_CV" id="PIT461B">-</span>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">유입 유량 (m³/h)</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.FIT411B.F_CV" id="FIT411B">-</span>
+							<span class="val" data-tag="CDSWSS.FIT421B.F_CV" id="FIT421B">-</span>
+							<span class="val" data-tag="CDSWSS.FIT431B.F_CV" id="FIT431B">-</span>
+							<span class="val" data-tag="CDSWSS.FIT441B.F_CV" id="FIT441B">-</span>
+							<span class="val" data-tag="CDSWSS.FIT451B.F_CV" id="FIT451B">-</span>
+							<span class="val" data-tag="CDSWSS.FIT461B.F_CV" id="FIT461B">-</span>
+						</div>
+					</div>
+					<div class="value img-item">
+						<p class="tit">고압 펌프</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.M407A_RUN_STS.F_CV" id="M407A"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M407B_RUN_STS.F_CV" id="M407B"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M407C_RUN_STS.F_CV" id="M407C"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M407D_RUN_STS.F_CV" id="M407D"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M407E_RUN_STS.F_CV" id="M407E"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M407F_RUN_STS.F_CV" id="M407F"><img class="on-img"></span>
+						</div>
+					</div>
+					<div class="value img-item">
+						<p class="tit">유출 밸브</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.M433A_FO_STS.F_CV" id="M433A"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M433B_FO_STS.F_CV" id="M433B"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M433C_FO_STS.F_CV" id="M433C"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M433D_FO_STS.F_CV" id="M433D"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M433E_FO_STS.F_CV" id="M433E"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M433F_FO_STS.F_CV" id="M433F"><img class="on-img"></span>
+						</div>
+					</div>
+					<div class="value img-item">
+						<p class="tit">유량조절밸브</p>
+						<div class="value-arr">
+							<span class="val" data-tag="CDSWSS.M444A_FO_STS.F_CV" id="M444A"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M444B_FO_STS.F_CV" id="M444B"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M444C_FO_STS.F_CV" id="M444C"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M444D_FO_STS.F_CV" id="M444D"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M444E_FO_STS.F_CV" id="M444E"><img class="on-img"></span>
+							<span class="val" data-tag="CDSWSS.M444F_FO_STS.F_CV" id="M444F"><img class="on-img"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main-contents-grid1" style="width: 100%; height: 55%;">
+			<div class="main-search-group">
+				<div class="com-search-unit">
+					<p>조회 일자</p>
+					<input type="date" id="stdDate">
+					<select id="sel_chart_type" onchange="initChart('chart_type');">
+						<option value="ACC">일 누적</option>
+						<option value="MAX">일 최대</option>
+						<option value="USG">일 소비량</option>
+					</select>
+					<select id="sel_chart_range" onchange="initChart();">
+						<option value="1">1개월</option><option value="3">3개월</option><option value="6">6개월</option>
+					</select>
+					<button class="find" onclick="search();"></button>
+
+				</div>
+				<div class="com-search-unit">
+
+				</div>
+			</div>
+			<div class="data-box">
+				<div style="width: 100%; height: 100%;">
+					<div id="container"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

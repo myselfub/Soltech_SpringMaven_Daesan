@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsan.web.em.mapper.Em0104Mapper">
+	
+	<select id="getBeforeUntPrcInfo" resultType="hashmap">
+		SELECT DISTINCT CRTR_YR FROM RDIUNITPRCMNG_TB
+	</select>
+	
+	<select id="getPwrerUntPrcMst" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			CRTR_YR ,
+			DATA_CD,
+			APLCN_PTM_CD,
+			DATA_SE_CD,
+			APLCN_UNTPRC 
+		FROM RDIUNITPRCMNG_TB
+		WHERE CRTR_YR = #{year} AND DATA_CD = '1'
+	</select>
+	
+	<select id="getPwrerUntMng" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM RDIPWRERUNITMNG_TB WHERE CRTR_YR = #{year}
+	</select>
+
+	<insert id="onSaveUntPrc" parameterType="java.util.List">
+		MERGE INTO RDIUNITPRCMNG_TB U
+		USING(
+			<foreach collection="list" item="item" separator="UNION">
+				SELECT 
+					#{item.crtr_yr} AS CRTR_YR,
+					#{item.data_cd} AS DATA_CD,
+					#{item.aplcn_ptm_cd} AS APLCN_PTM_CD,
+					#{item.data_se_cd} AS DATA_SE_CD,
+					#{item.aplcn_untprc} AS APLCN_UNTPRC
+				FROM DUAL
+			</foreach>
+		) N
+		ON(U.CRTR_YR = N.CRTR_YR AND U.DATA_CD = N.DATA_CD AND U.APLCN_PTM_CD = N.APLCN_PTM_CD AND U.DATA_SE_CD = N.DATA_SE_CD)
+		WHEN MATCHED THEN
+			UPDATE SET APLCN_UNTPRC = N.APLCN_UNTPRC
+		WHEN NOT MATCHED THEN
+			INSERT(CRTR_YR, DATA_CD, APLCN_PTM_CD, DATA_SE_CD, APLCN_UNTPRC)
+			VALUES(N.CRTR_YR, N.DATA_CD, N.APLCN_PTM_CD, N.DATA_SE_CD, N.APLCN_UNTPRC)
+	</insert>
+	
+	<insert id="onSaveHourSetting" parameterType="java.util.List">
+		MERGE INTO RDIPWRERUNITMNG_TB U
+		USING(
+			<foreach collection="list" item="item" separator="UNION">
+				SELECT 
+					#{item.crtr_yr} AS CRTR_YR,
+					#{item.aplcn_ptm_cd} AS APLCN_PTM_CD,
+					#{item.hr_00} AS DATA_SE_CD_00, #{item.hr_01} AS DATA_SE_CD_01, #{item.hr_02} AS DATA_SE_CD_02, 
+					#{item.hr_03} AS DATA_SE_CD_03, #{item.hr_04} AS DATA_SE_CD_04, #{item.hr_05} AS DATA_SE_CD_05, 
+					#{item.hr_06} AS DATA_SE_CD_06, #{item.hr_07} AS DATA_SE_CD_07, #{item.hr_08} AS DATA_SE_CD_08, 
+					#{item.hr_09} AS DATA_SE_CD_09, #{item.hr_10} AS DATA_SE_CD_10, #{item.hr_11} AS DATA_SE_CD_11, 
+					#{item.hr_12} AS DATA_SE_CD_12, #{item.hr_13} AS DATA_SE_CD_13, #{item.hr_14} AS DATA_SE_CD_14, 
+					#{item.hr_15} AS DATA_SE_CD_15, #{item.hr_16} AS DATA_SE_CD_16, #{item.hr_17} AS DATA_SE_CD_17, 
+					#{item.hr_18} AS DATA_SE_CD_18, #{item.hr_19} AS DATA_SE_CD_19, #{item.hr_20} AS DATA_SE_CD_20, 
+					#{item.hr_21} AS DATA_SE_CD_21, #{item.hr_22} AS DATA_SE_CD_22, #{item.hr_23} AS DATA_SE_CD_23
+				FROM DUAL
+			</foreach>
+		) N
+		ON(U.CRTR_YR = N.CRTR_YR AND U.APLCN_PTM_CD = N.APLCN_PTM_CD)
+		WHEN MATCHED THEN
+			UPDATE SET 
+				DATA_SE_CD_00 = N.DATA_SE_CD_00, DATA_SE_CD_01 = N.DATA_SE_CD_01, DATA_SE_CD_02 = N.DATA_SE_CD_02, 
+				DATA_SE_CD_03 = N.DATA_SE_CD_03, DATA_SE_CD_04 = N.DATA_SE_CD_04, DATA_SE_CD_05 = N.DATA_SE_CD_05, 
+				DATA_SE_CD_06 = N.DATA_SE_CD_06, DATA_SE_CD_07 = N.DATA_SE_CD_07, DATA_SE_CD_08 = N.DATA_SE_CD_08, 
+				DATA_SE_CD_09 = N.DATA_SE_CD_09, DATA_SE_CD_10 = N.DATA_SE_CD_10, DATA_SE_CD_11 = N.DATA_SE_CD_11, 
+				DATA_SE_CD_12 = N.DATA_SE_CD_12, DATA_SE_CD_13 = N.DATA_SE_CD_13, DATA_SE_CD_14 = N.DATA_SE_CD_14, 
+				DATA_SE_CD_15 = N.DATA_SE_CD_15, DATA_SE_CD_16 = N.DATA_SE_CD_16, DATA_SE_CD_17 = N.DATA_SE_CD_17, 
+				DATA_SE_CD_18 = N.DATA_SE_CD_18, DATA_SE_CD_19 = N.DATA_SE_CD_19, DATA_SE_CD_20 = N.DATA_SE_CD_20, 
+				DATA_SE_CD_21 = N.DATA_SE_CD_21, DATA_SE_CD_22 = N.DATA_SE_CD_22, DATA_SE_CD_23 = N.DATA_SE_CD_23
+		WHEN NOT MATCHED THEN
+			INSERT(CRTR_YR,  APLCN_PTM_CD, 
+				DATA_SE_CD_00, DATA_SE_CD_01, DATA_SE_CD_02, DATA_SE_CD_03, DATA_SE_CD_04, DATA_SE_CD_05, 
+				DATA_SE_CD_06, DATA_SE_CD_07, DATA_SE_CD_08, DATA_SE_CD_09, DATA_SE_CD_10, DATA_SE_CD_11, 
+				DATA_SE_CD_12, DATA_SE_CD_13, DATA_SE_CD_14, DATA_SE_CD_15, DATA_SE_CD_16, DATA_SE_CD_17, 
+				DATA_SE_CD_18, DATA_SE_CD_19, DATA_SE_CD_20, DATA_SE_CD_21, DATA_SE_CD_22, DATA_SE_CD_23)
+			VALUES(N.CRTR_YR, N.APLCN_PTM_CD, 
+				N.DATA_SE_CD_00, N.DATA_SE_CD_01, N.DATA_SE_CD_02, N.DATA_SE_CD_03, N.DATA_SE_CD_04, N.DATA_SE_CD_05,
+				N.DATA_SE_CD_06, N.DATA_SE_CD_07, N.DATA_SE_CD_08, N.DATA_SE_CD_09, N.DATA_SE_CD_10, N.DATA_SE_CD_11, 
+				N.DATA_SE_CD_12, N.DATA_SE_CD_13, N.DATA_SE_CD_14, N.DATA_SE_CD_15, N.DATA_SE_CD_16, N.DATA_SE_CD_17, N.DATA_SE_CD_18, 
+				N.DATA_SE_CD_19, N.DATA_SE_CD_20, N.DATA_SE_CD_21, N.DATA_SE_CD_22, N.DATA_SE_CD_23)
+	</insert>
+	
+	<select id="getUsgPrcValues" parameterType="hashmap" resultType="hashmap">
+		WITH UP_TBL AS (
+			SELECT S.*, P.APLCN_UNTPRC 
+			FROM (
+				SELECT CRTR_YR, APLCN_PTM_CD, HH, DATA_SE_CD
+				FROM (
+					SELECT *
+					FROM RDIPWRERUNITMNG_TB 
+					WHERE #{from_year} <![CDATA[<=]]> CRTR_YR AND CRTR_YR <![CDATA[<=]]> #{to_year}
+				)
+				UNPIVOT(
+					DATA_SE_CD FOR HH IN (
+						DATA_SE_CD_00 AS '00', DATA_SE_CD_01 AS '01', DATA_SE_CD_02 AS '02', DATA_SE_CD_03 AS '03', 
+						DATA_SE_CD_04 AS '04', DATA_SE_CD_05 AS '05', DATA_SE_CD_06 AS '06', DATA_SE_CD_07 AS '07', 
+						DATA_SE_CD_08 AS '08', DATA_SE_CD_09 AS '09', DATA_SE_CD_10 AS '10', DATA_SE_CD_11 AS '11', 
+						DATA_SE_CD_12 AS '12', DATA_SE_CD_13 AS '13', DATA_SE_CD_14 AS '14', DATA_SE_CD_15 AS '15', 
+						DATA_SE_CD_16 AS '16', DATA_SE_CD_17 AS '17', DATA_SE_CD_18 AS '18', DATA_SE_CD_19 AS '19', 
+						DATA_SE_CD_20 AS '20', DATA_SE_CD_21 AS '21', DATA_SE_CD_22 AS '22', DATA_SE_CD_23 AS '23'
+					)
+				)
+			) S
+			LEFT JOIN RDIUNITPRCMNG_TB P
+			ON S.CRTR_YR = P.CRTR_YR AND S.APLCN_PTM_CD = P.APLCN_PTM_CD AND S.DATA_SE_CD = P.DATA_SE_CD
+		)
+		SELECT 
+			(H.YYYY || '-' || H.MM || '-' || H.DD || ' ' || H.HH || ':00:00') AS DATA_DT,
+			H.YYYY, H.MM, H.DD, H.HH,
+			H.LAST_VALUE,
+			U.APLCN_UNTPRC,
+			ROUND(H.LAST_VALUE * U.APLCN_UNTPRC, 2) AS TOT_PRC
+		FROM (
+			SELECT 
+				YYYY, 
+				CASE 
+					WHEN MM IN ('11', '12', '01', '02') THEN 'W'
+					WHEN MM IN ('06', '07', '08') THEN 'S'
+					ELSE 'F'
+				END AS APLCN_PTM_CD,
+				MM, DD, HH, LAST_VALUE
+			FROM (
+				SELECT 
+					SUBSTR(DATA_SAVE_DT, 1, 4) AS YYYY,
+					SUBSTR(DATA_SAVE_DT, 5, 2) AS MM,
+					SUBSTR(DATA_SAVE_DT, 7, 2) AS DD,
+					SUBSTR(DATA_SAVE_DT, 9, 2) AS HH,
+					LAST_VALUE
+				FROM RDFSTAT01HH_TB 
+				WHERE ITEM_NM ='PWRER_USG_HH'
+				AND #{from_year} || #{from_mon} <![CDATA[<=]]> SUBSTR(DATA_SAVE_DT, 1, 6) AND SUBSTR(DATA_SAVE_DT, 1, 6) <![CDATA[<=]]> #{to_year} || #{to_mon}
+			) H
+		) H
+		LEFT JOIN UP_TBL U
+		ON H.YYYY = U.CRTR_YR AND H.APLCN_PTM_CD = U.APLCN_PTM_CD AND H.HH = U.HH
+		ORDER BY DATA_DT
+	</select>
+</mapper>

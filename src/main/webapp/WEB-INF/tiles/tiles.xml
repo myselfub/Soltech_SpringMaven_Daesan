@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="BizRenderPage" template="/WEB-INF/tiles/layout_bizrender.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="left" value="/WEB-INF/tiles/left.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="css" value="/resources/css/com/com.css" />
+	</definition>
+
+	<definition name="leftMarginPage" template="/WEB-INF/tiles/layout_leftM.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="left" value="/WEB-INF/tiles/left.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="css" value="/resources/css/com/com.css" />
+	</definition>
+
+	<definition name="trendPage" template="/WEB-INF/tiles/layout_trend.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="css" value="/resources/css/com/com.css" />
+	</definition>
+
+	<definition name="popup" template="/WEB-INF/tiles/layout_popup.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="css" value="/resources/css/com/com.css" />
+	</definition>
+
+	<!-- 종합 관제 -->
+	<definition name="db/*.page" extends="BizRenderPage">
+		<put-attribute name="page_css" value="/resources/css/view/db.css" />
+		<put-attribute name="body" value="/WEB-INF/views/db/{1}.jsp" />
+	</definition>
+
+	<definition name="em/em0101.page" extends="BizRenderPage">
+		<put-attribute name="page_css" value="/resources/css/view/em.css" />
+		<put-attribute name="body" value="/WEB-INF/views/em/em0101.jsp" />
+	</definition>
+
+	<definition name="em/em0102.page" extends="BizRenderPage">
+		<put-attribute name="page_css" value="/resources/css/view/em.css" />
+		<put-attribute name="body" value="/WEB-INF/views/em/em0102.jsp" />
+	</definition>
+	<!-- 에너지 관리 -->
+	<definition name="em/*.page" extends="leftMarginPage">
+		<put-attribute name="page_css" value="/resources/css/view/em.css" />
+		<put-attribute name="body" value="/WEB-INF/views/em/{1}.jsp" />
+	</definition>
+
+	<!-- 데이터품질 관리 -->
+	<definition name="qm/*.page" extends="leftMarginPage">
+		<put-attribute name="page_css" value="/resources/css/view/qm.css" />
+		<put-attribute name="body" value="/WEB-INF/views/qm/{1}.jsp" />
+	</definition>
+
+	<!-- AI 시스템(데이터 전처리) -->
+	<definition name="ai/*.page" extends="leftMarginPage">
+		<put-attribute name="page_css" value="/resources/css/view/ai.css" />
+		<put-attribute name="body" value="/WEB-INF/views/ai/{1}.jsp" />
+	</definition>
+
+	<!-- 트렌드 팝업용 -->
+	<definition name="tv/trendView" extends="trendPage">
+		<put-attribute name="page_css" value="/resources/css/com/trend.css" />
+	</definition>
+
+	<definition name="pop/*/*.page" extends="popup">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/popup/{2}.jsp" />
+		<put-attribute name="page_css" value="/resources/css/com/popup.css" />
+	</definition>
+</tiles-definitions>

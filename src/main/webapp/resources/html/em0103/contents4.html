@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>전처리(DMGF)</title>
+</head>
+<body>
+	<div class="main-contents-grid1" style="height: 100%; row-gap: 5px;">
+		<div class="main-contents-grid2"
+			style="width: 100%; height: 45%; flex: 1 1 0;">
+			<div class="data-box" style="flex-basis: 15%;">
+				<div class="title">전력 현황</div>
+				<div class="values">
+					<div class="value">
+						<p class="tit">실시간</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="RT_POWER">-</span>
+							<p class="unit">KW</p>
+						</div>
+
+					</div>
+					<div class="value">
+						<p class="tit">
+							<span>최대 <span id="maxTime">-</span>
+							</span>
+						</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="MAX_POWER">-</span>
+							<p class="unit">KW</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">소비량</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="USG_POWER">-</span>
+							<p class="unit">MWh</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">소비요금</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="PRC_POWER">-</span>
+							<p class="unit">원</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 20%;">
+				<div class="title">유입 수질</div>
+				<div class="values">
+					<div class="value">
+						<p class="tit">총 유기 탄소량</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.TOC301.F_CV" id="TOC301">-</span>
+							<p class="unit">mg/L</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">전기전도도</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.CE301.F_CV" id="CE301">-</span>
+							<p class="unit">μS/cm</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">수소이온농도</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.Ph301.F_CV" id="Ph301">-</span>
+							<p class="unit">pH</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">탁도</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.TbE301.F_CV" id="TbE301">-</span>
+							<p class="unit">NTU</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">잔류염소</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.Cl2301.F_CV" id="Cl2301">-</span>
+							<p class="unit">mg/L</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 45%;">
+				<div class="title">DMGF</div>
+				<div class="values">
+					<div class="value img-item">
+						<p class="tit" style="text-wrap: wrap; width: 130px;">여과제어</p>
+						<div style="display: flex; flex-direction: column; row-gap: 5px;">
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.DMGF_A_ON_ST.F_CV"
+									id="DMGF_A"><img class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_B_ON_ST.F_CV" id="DMGF_B"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_C_ON_ST.F_CV" id="DMGF_C"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_D_ON_ST.F_CV" id="DMGF_D"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_E_ON_ST.F_CV" id="DMGF_E"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_F_ON_ST.F_CV" id="DMGF_F"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_G_ON_ST.F_CV" id="DMGF_G"><img
+									class="on-img"></span>
+							</div>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.DMGF_H_ON_ST.F_CV"
+									id="DMGF_H"><img class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_I_ON_ST.F_CV" id="DMGF_I"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_J_ON_ST.F_CV" id="DMGF_J"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_K_ON_ST.F_CV" id="DMGF_K"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_L_ON_ST.F_CV" id="DMGF_L"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_M_ON_ST.F_CV" id="DMGF_M"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.DMGF_N_ON_ST.F_CV" id="DMGF_N"><img
+									class="on-img"></span>
+							</div>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit" style="text-wrap: wrap; width: 130px;">여과지 수위
+							(m)</p>
+						<div
+							style="display: flex; flex-direction: column; row-gap: 5px; 5 px; width: 80%;">
+							<div style="display: flex; column-gap: 5px; width: 100%;">
+								<span class="val" data-tag="CDSWSS.LIT311A.F_CV" id="LIT311A">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311B.F_CV" id="LIT311B">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311C.F_CV" id="LIT311C">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311D.F_CV" id="LIT311D">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311E.F_CV" id="LIT311E">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311F.F_CV" id="LIT311F">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311G.F_CV" id="LIT311G">-</span>
+							</div>
+							<div style="display: flex; column-gap: 5px; width: 100%;">
+								<span class="val" data-tag="CDSWSS.LIT311H.F_CV" id="LIT311H">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311I.F_CV" id="LIT311I">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311J.F_CV" id="LIT311J">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311K.F_CV" id="LIT311K">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311L.F_CV" id="LIT311L">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311M.F_CV" id="LIT311M">-</span>
+								<span class="val" data-tag="CDSWSS.LIT311N.F_CV" id="LIT311N">-</span>
+							</div>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit" style="text-wrap: wrap; width: 130px;">여과지 유출수
+							탁도 (NTU)</p>
+						<div
+							style="display: flex; flex-direction: column; row-gap: 5px; 5 px; width: 80%;">
+							<div style="display: flex; column-gap: 5px; width: 100%;">
+								<span class="val" data-tag="CDSWSS.TbE311A.F_CV" id="TbE311A">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311B.F_CV" id="TbE311B">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311C.F_CV" id="TbE311C">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311D.F_CV" id="TbE311D">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311E.F_CV" id="TbE311E">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311F.F_CV" id="TbE311F">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311G.F_CV" id="TbE311G">-</span>
+							</div>
+							<div style="display: flex; column-gap: 5px; width: 100%;">
+								<span class="val" data-tag="CDSWSS.TbE311H.F_CV" id="TbE311H">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311I.F_CV" id="TbE311I">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311J.F_CV" id="TbE311J">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311K.F_CV" id="TbE311K">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311L.F_CV" id="TbE311L">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311M.F_CV" id="TbE311M">-</span>
+								<span class="val" data-tag="CDSWSS.TbE311N.F_CV" id="TbE311N">-</span>
+							</div>
+						</div>
+					</div>
+					<div class="value img-item">
+						<p class="tit" style="text-wrap: wrap; width: 130px;">여과수 이송펌프</p>
+						<div style="display: flex; flex-direction: column; row-gap: 5px;">
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.M304A_RUN_STS.F_CV"
+									id="M304A"><img class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.M304B_RUN_STS.F_CV" id="M304B"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.M304C_RUN_STS.F_CV" id="M304C"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.M304D_RUN_STS.F_CV" id="M304D"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.M304E_RUN_STS.F_CV" id="M304E"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.M304F_RUN_STS.F_CV" id="M304F"><img
+									class="on-img"></span> <span class="val"
+									data-tag="CDSWSS.M304G_RUN_STS.F_CV" id="M304G"><img
+									class="on-img"></span>
+							</div>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit" style="text-wrap: wrap; width: 130px;">여과수 저류조
+							수위</p>
+						<div
+							style="display: flex; flex-direction: column; row-gap: 5px; 5 px; width: 80%;">
+							<div style="display: flex; column-gap: 5px; width: 100%;">
+								<span class="val" data-tag="CDSWSS.LIT321A.F_CV" id="LIT321A">-</span>
+								<span class="val" data-tag="CDSWSS.LIT321B.F_CV" id="LIT321B">-</span>
+							</div>
+						</div>
+					</div>
+					<!-- 
+					<div class="value">
+						<p class="tit" style="text-wrap: wrap; width: 130px;">정수 유출수 탁도 (NTU)</p>
+						<div style="display: flex; flex-direction: column; row-gap: 5px; 5px; width: 80%;">
+							<div style="display: flex; column-gap: 5px; width: 100%;">
+								<span class="val" id="TbE_OUT_A">-</span>
+								<span class="val" id="TbE_OUT_B">-</span>
+								<span class="val" id="TbE_OUT_C">-</span>
+								<span class="val" id="TbE_OUT_D">-</span>
+								<span class="val" id="TbE_OUT_E">-</span>
+								<span class="val" id="TbE_OUT_F">-</span>
+								<span class="val" id="TbE_OUT_G">-</span>
+							</div>
+							<div style="display: flex; column-gap: 5px; width: 100%;">
+								<span class="val" id="TbE_OUT_H">-</span>
+								<span class="val" id="TbE_OUT_I">-</span>
+								<span class="val" id="TbE_OUT_J">-</span>
+								<span class="val" id="TbE_OUT_K">-</span>
+								<span class="val" id="TbE_OUT_L">-</span>
+								<span class="val" id="TbE_OUT_M">-</span>
+								<span class="val" id="TbE_OUT_N">-</span>
+							</div>
+						</div>
+					</div>
+					 -->
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 20%;">
+				<div class="title">RO 보호필터</div>
+				<div class="values" style="display: flex; flex-direction: column;">
+					<div class="value" style="height: auto;">
+						<p class="tit">산화환원전위차</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.ORP402.F_CV" id="ORP402">-</span>
+							<p class="unit">mV</p>
+						</div>
+					</div>
+					<!-- 
+					<div class="value">
+						<p class="tit">전기전도도</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.CE401.F_CV" id="CE401">-</span>
+							<p class="unit">μS/cm</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">수소이온농도</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.PH401.F_CV" id="PH401">-</span>
+							<p class="unit">pH</p>
+						</div>
+					</div>
+					 -->
+					<div class="value" style="height: auto;">
+						<p class="tit">탁도</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.TbE401.F_CV" id="TbE401">-</span>
+							<p class="unit">NTU</p>
+						</div>
+					</div>
+					<!-- 
+					<div class="value">
+						<p class="tit">잔류염소</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.CL2401.F_CV" id="CL2401">-</span>
+							<p class="unit">mg/L</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">오염지수계</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.SDI401.F_CV" id="SDI401">-</span>
+							<p class="unit"></p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">입자계수기</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.PC401.F_CV" id="PC401">-</span>
+							<p class="unit">μm</p>
+						</div>
+					</div>
+					 -->
+				</div>
+			</div>
+		</div>
+		<div class="main-contents-grid1" style="width: 100%; height: 55%;">
+			<div class="main-search-group">
+				<div class="com-search-unit">
+					<p>조회 일자</p>
+					<input type="date" id="stdDate"> <select
+						id="sel_chart_type" onchange="initChart('chart_type');">
+						<option value="ACC">일 누적</option>
+						<option value="MAX">일 최대</option>
+						<option value="USG">일 소비량</option>
+					</select> <select id="sel_chart_range" onchange="initChart();">
+						<option value="1">1개월</option>
+						<option value="3">3개월</option>
+						<option value="6">6개월</option>
+					</select>
+					<button class="find" onclick="search();"></button>
+
+				</div>
+				<div class="com-search-unit"></div>
+			</div>
+			<div class="data-box">
+				<div style="width: 100%; height: 100%;">
+					<div id="container"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

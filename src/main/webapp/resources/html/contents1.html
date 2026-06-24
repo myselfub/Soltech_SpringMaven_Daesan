@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전체 공정</title>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/view/db0103/contents1.css">
+</head>
+<body>
+	<div class="contentBox" style="position:relative;">
+		<canvas id="Graphics" style="cursor: default; background: #172d43;"></canvas>
+		<div class="content" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+			<div class="data-box">
+				<img class="data-bar" />
+				<img class="data-bar-btn-slide in" onclick="toggleDataBox()" />
+				<img class="legend" />
+			</div>
+			<!-- 수로 -->
+			<img class="contentL"
+				src="resources/images/view/db/db0103/contents1/bg/BG01L.png">
+			<!-- 네임택 -->
+			<img class="contentNT"
+				src="resources/images/view/db/db0103/contents1/bg/BG01NT.png">
+			<!-- 한화토탈 영역/정보 -->
+			<img class="company-area content1"> <img
+				class="company-data data1">
+			<!-- 한화토탈 영역/정보 -->
+			<img class="company-area content2"> <img
+				class="company-data data2"> <img class="company-area content3">
+			<img class="company-data data3"> <img
+				class="company-area content4"> <img class="company-data data4">
+			<div class="area01"></div>
+			<div class="area02"></div>
+			<div class="Adata"></div>
+		</div>
+	</div>
+	<script>
+		function init() {
+			checkFullScreenMode();
+			$(".data-box").css("top", "3.5rem");
+			$(".data-box").css("width", "100%");
+			$(".data-box").css("height", "calc(100% - 3.5rem)");
+		};
+
+		function toggleDataBox() {
+			$(".data-box .data-bar").toggle();
+			if ($(".data-box .data-bar").is(":visible")) {
+				$(".data-box .data-bar-btn-slide").removeClass("out");
+				$(".data-box .data-bar-btn-slide").addClass("in");
+				$(".data-box .data-bar-btn-slide").css("right", $(".data-box .data-bar").css("width"));
+				//$(".data-box .legend").show();
+			} else {
+				$(".data-box .data-bar-btn-slide").removeClass("in");
+				$(".data-box .data-bar-btn-slide").addClass("out");
+				$(".data-box .data-bar-btn-slide").css("right", 0);
+				//$(".data-box .legend").hide();
+			}
+		};
+	</script>
+</body>
+</html>

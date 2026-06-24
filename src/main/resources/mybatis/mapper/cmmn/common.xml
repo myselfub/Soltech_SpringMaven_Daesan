@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsan.web.cmmn.mapper.CmmnMapper">
+
+	<select id="getProcInfoList" parameterType="hashmap" resultType="hashmap">
+		SELECT PROCS_ID, PROCS_NM, PROCS_SN 
+		FROM RDIPROCSINFO_TB
+		<if test='procs_id != null and !procs_id.equals("*")'>
+			WHERE PROCS_ID = #{procs_id}
+		</if>
+		<if test='etc == null or etc.equals("") or etc.equals("N")'>
+			WHERE PROCS_ID != 'PROCS_10'
+		</if>
+		ORDER BY PROCS_SN
+	</select>
+	
+	<select id="getHstnTagList" resultType="hashmap">
+		SELECT * FROM RDITAG_TB 
+		WHERE 1=1
+		<if test='searchwd != null'>
+			AND (TAG_NM LIKE '%'||LOWER(#{searchwd})||'%' OR TAG_NM LIKE '%'||UPPER(#{searchwd})||'%' OR TAG_NM LIKE '%'||#{searchwd}||'%')
+		</if>
+		<if test='search_desc != null'>
+			AND TAG_ADIT_DC LIKE '%'||#{search_desc}||'%'
+		</if>
+		<if test='procs_id != null and !procs_id.equals("*")'>
+			AND PROCS_ID = #{procs_id}
+		</if>
+		<if test='fclt_id != null and !fclt_id.equals("*")'>
+			AND FCLT_ID = #{fclt_id}
+		</if>
+		<if test='fclt_dtl_id != null and !fclt_dtl_id.equals("*")'>
+			AND FCLT_DTL_ID = #{fclt_dtl_id}
+		</if>
+		ORDER BY TAGSN
+	</select>
+	
+	<select id="getHstnTagList2" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			TAGSN, TAG_NM, TAG_ADIT_DC, 
+			PROCS_ID , 
+			(SELECT PROCS_NM FROM RDIPROCSINFO_TB P WHERE P.PROCS_ID = T.PROCS_ID) AS PROCS_NM,
+			FCLT_ID , 
+			(SELECT CD_NM FROM RDICMMNCD_TB WHERE CD_SE='CD101' AND CD_ID = T.FCLT_ID) AS FCLT_NM,
+			FCLT_DTL_ID , 
+			(
+				SELECT CD_NM 
+				FROM RDICMMNCD_TB 
+				WHERE CD_SE = T.FCLT_ID AND CD_ID = T.FCLT_DTL_ID
+			) AS FCLT_DETAIL_NM
+		FROM RDITAG_TB T
+		WHERE 1=1
+			<if test='search_wd != "" and search_wd != null'>
+				AND (TAG_NM LIKE '%' || UPPER(#{search_wd}) || '%' OR TAG_NM LIKE '%' || LOWER(#{search_wd}) || '%')
+			</if>
+			<choose>
+				<when test="procs_list.size()!=0">
+					AND PROCS_ID IN (
+						<foreach collection="procs_list" item="item" separator=",">
+							#{item}
+						</foreach>
+					)
+				</when>
+				<otherwise>
+					AND PROCS_ID IS NULL
+				</otherwise>
+			</choose>
+			<choose>
+				<when test="fclt_list.size()!=0">
+					AND FCLT_ID IN (
+						<foreach collection="fclt_list" item="item" separator=",">
+							#{item}
+						</foreach>
+					)
+				</when>
+				<otherwise>
+					AND FCLT_ID IS NULL
+				</otherwise>
+			</choose>
+		ORDER BY PROCS_ID, TAGSN
+	</select>
+	<select id="getEvntInfoList" parameterType="hashmap" resultType="hashmap">
+		SELECT CD_SE, CD_ID, CD_NM, CD_DESC
+		FROM RDICMMNCD_TB
+		WHERE CD_SE = 'CD100' 
+		ORDER BY CD_SN
+	</select>
+	
+	<select id="getFcltInfoList" parameterType="hashmap" resultType="hashmap">
+		SELECT CD_SE, CD_ID, CD_NM, CD_DESC
+		FROM RDICMMNCD_TB
+		WHERE CD_SE = 'CD101'
+		ORDER BY CD_SN
+	</select>
+	
+	<select id="getFcltDeatilInfoList" parameterType="hashmap" resultType="hashmap">
+		SELECT CD_SE, CD_ID, CD_NM, CD_DESC
+		FROM RDICMMNCD_TB
+		
+		<choose>
+			<when test='fclt_id.equals("*")'>
+				WHERE CD_SE IN ('CD102', 'CD103', 'CD104', 'CD106')
+			</when>
+			<otherwise>
+				WHERE CD_SE = #{fclt_id}
+			</otherwise>
+		</choose>
+		ORDER BY CD_SN
+	</select>
+	
+	<select id="getDataSourceInfoList" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			CD_SE, CD_ID, CD_NM, CD_DESC
+		FROM
+			RDICMMNCD_TB
+		WHERE
+			CD_SE = 'CD203'
+		ORDER BY
+			CD_SN
+	</select>
+
+</mapper>

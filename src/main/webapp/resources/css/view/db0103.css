@@ -1,0 +1,344 @@
+html {
+	overflow-y: hidden;
+}
+
+.contentBox_m {
+	padding: 0;
+}
+
+.navi-box {
+	position: relative;
+	display: flex;
+	border: 1px solid #172D43;
+	opacity: 1;
+	z-index: 10;
+	width: 100%;
+	justify-content: center;
+	background: #172D43;
+	height: 3.5rem;
+	top: 0;
+	column-gap: 0.3rem;
+}
+
+.navi-contents {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.navi-path {
+	cursor: pointer;
+	padding: 0.65rem;
+	width: 7.1rem;
+	height: 2.75rem;
+	text-align: center;
+	background: #172D43;
+	border-radius: 0.25rem;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.navi-path p {
+	color: #FFFFFF;
+	font-family: 'Pretendard-SemiBold';
+}
+
+.navi-path.active {
+	background: #1674A8;
+}
+
+.navi-path:hover {
+	background: #1674A8;
+}
+
+#contents {
+	position: relative;
+	height: calc(100% - 3.5rem);
+	background: #172D43;
+}
+
+#contents svg text, #contents svg tspan {
+	font-size: revert-layer;
+}
+
+#contents .display-none {
+	display: none;
+}
+
+#contents .clickable {
+	cursor: pointer;
+}
+
+#contents .data-text {
+	text-anchor: end;
+}
+
+/* 메인 */
+#contents .map-piece {
+	stroke: #F0F0F0;
+	stroke-width: 4;
+	perspective: 200rem;
+	perspective-origin: center;
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+#contents .map-piece-hover {
+	stroke-width: 0;
+	filter: brightness(1.25) drop-shadow(0.25rem 0.25rem 0.5rem #FDFDFD);
+}
+
+#contents .map-piece-hover#hhTotalMapPiece {
+	transform: scale(1.08) translateX(1.5%) translateY(-2%) rotateX(5deg)
+		rotateY(-10deg);
+}
+
+#contents .map-piece-hover#hdOilMapPiece {
+	transform: scale(1.08) translateX(-1.25%) translateY(2.5%) rotateX(5deg)
+		rotateY(-10deg);
+}
+
+#contents .map-piece-hover#hdOciMapPiece {
+	transform: scale(1.08) translateX(-1.5%) translateY(0.5%) rotateX(8deg)
+		rotateY(-10deg);
+}
+
+#contents .map-piece-hover#lgMapPiece {
+	transform: scale(1.08) translateX(-0.5%) translateY(-1.5%) rotateX(8deg)
+		rotateY(-10deg);
+}
+
+#contents .map-lines {
+	filter: drop-shadow(0.1rem 0.1rem 0.15rem #F0F0F0);
+}
+
+#contents .map-lines.map-lines-hover {
+	filter: brightness(1.2) drop-shadow(0.1rem 0.1rem 0.05rem #F0F0F0);
+}
+
+#contents #grpDataBar {
+	perspective: 100rem;
+	perspective-origin: center;
+	transform-origin: center;
+	transition: transform 0.5s ease;
+}
+
+#contents .databar-hide {
+	transform: translateX(17%);
+}
+
+#contents .databar-hide #dataBarArrowIcon {
+	transform: scaleX(-1);
+	transform-origin: center;
+	transform-box: border-box;
+}
+
+/* 평면도 */
+#contents #floorPlan #LeftGrp .left-grp-img-bg {
+	perspective: 50rem;
+	perspective-origin: center;
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+#contents #floorPlan #LeftGrp .left-grp-img-bg-hover#data01Img-Bg {
+	transform: scale(1.03) translateX(0.9%) translateY(0.9%);
+	filter: drop-shadow(0.1rem 0.3rem 0.4rem #090909);
+}
+
+#contents #floorPlan #LeftGrp .left-grp-img-bg-hover#data02Img-Bg {
+	transform: scale(1.03) translateX(0.4%) translateY(0.7%);
+	filter: drop-shadow(0.1rem 0.3rem 0.4rem #090909);
+}
+
+#contents #floorPlan #LeftGrp .left-grp-img-bg-hover#data03Img-Bg {
+	transform: scale(1.03) translateX(-0.05%) translateY(0.6%);
+	filter: drop-shadow(0.1rem 0.3rem 0.4rem #090909);
+}
+
+#contents #floorPlan #LeftGrp .left-grp-img-bg-hover#data04Img-Bg {
+	transform: scale(1.03) translateX(0.8%) translateY(-0.5%);
+	filter: drop-shadow(0.1rem 0.3rem 0.4rem #090909);
+}
+
+#contents #floorPlan #LeftGrp .left-grp-img-bg-hover#data05Img-Bg {
+	transform: scale(1.03) translateX(0.3%) translateY(-0.5%);
+	filter: drop-shadow(0.1rem 0.3rem 0.4rem #090909);
+}
+
+#contents #floorPlan #LeftGrp .left-grp-img-bg-hover#data06Img-Bg {
+	transform: scale(1.03) translateX(-0.05%) translateY(-0.65%);
+	filter: drop-shadow(0.1rem 0.3rem 0.4rem #090909);
+}
+
+#contents #floorPlan #RightGrpBottom .right-grp-bottom-bg {
+	perspective: 50rem;
+	perspective-origin: center;
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+#contents #floorPlan #RightGrpBottom .right-grp-bottom-bg-hover#data01Img-hover {
+	transform: scale(1.06) translateX(-2%) translateY(-1.6%);
+}
+
+#contents #floorPlan #RightGrpBottom .right-grp-bottom-bg-hover#data02Img-hover {
+	transform: scale(1.06) translateX(-2%) translateY(-0.1%);
+}
+
+#contents #floorPlan #RightGrpBottom .right-grp-bottom-bg-hover#data03Img-hover {
+	transform: scale(1.06) translateX(-1.5%) translateY(-0.1%);
+}
+
+#contents #floorPlan #RightGrpBottom .right-grp-bottom-bg-hover#data04Img-hover {
+	transform: scale(1.06) translateX(-1.5%) translateY(-1.5%);
+}
+
+#contents #floorPlan #RightGrpBottom .right-grp-bottom-bg-hover#data06Img-hover {
+	transform: scale(1.06) translateX(0%) translateY(0%);
+}
+
+#contents #floorPlan #RightGrpBottom .filter-brightness {
+	filter: brightness(0.5);
+}
+
+/* 공정도 */
+#contents #processChart .process-chart-bottom-data {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+#contents #processChart .process-chart-bottom-data  > .process-chart-bottom-data-contents {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	height: 100%;
+}
+
+#contents #processChart .process-chart-bottom-data  > .process-chart-bottom-data-contents:nth-child(even) {
+	background: #243D58;
+}
+
+#contents #processChart .process-chart-bottom-data  > .process-chart-bottom-data-contents:nth-child(odd) {
+	background: #1A324B;
+}
+
+#contents #processChart .process-chart-bottom-data .process-chart-bottom-data-contents > .process-chart-bottom-data-content-datas,
+#contents #processChart .process-chart-bottom-data .process-chart-bottom-data-contents > .process-chart-bottom-data-content-datas > .process-chart-bottom-data-content-datas-inner {
+	flex: 1;
+	width: 100%;
+	padding: 0.5rem 0.7rem 0.5rem 0.9rem;
+	color: #F0F0F0;
+	font-size: 1.3rem;
+}
+
+#contents #processChart .process-chart-bottom-data .process-chart-bottom-data-contents > .process-chart-bottom-data-content-datas > .process-chart-bottom-data-content-datas-inner {
+	padding: 0.2rem 0.3rem 0.2rem 0.4rem;
+}
+
+#contents #processChart .process-chart-bottom-data .process-chart-bottom-data-contents > .process-chart-bottom-data-content-datas-flex {
+	display: flex;
+}
+
+#contents #processChart .process-chart-bottom-data .process-chart-bottom-data-contents > .process-chart-bottom-data-content-datas:nth-child(odd):not(:first-child) {
+	text-align: right;
+}
+
+#contents #processChart .process-chart-bottom-data .process-chart-bottom-data-contents > .process-chart-bottom-data-content-datas .process-chart-bottom-data-content-units {
+	margin-left: 0.2rem;
+}
+
+/* 계통도 */
+#contents #systematicDiagramContent {
+	width: 100%;
+	height: 100%;
+	padding: 0.8rem 1.7rem;
+	display: flex;
+	flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: linear-gradient(0deg, #162B41 0%, #447599 100%);
+}
+
+#systematicDiagramContent .systematic-diagram-top {
+	width: 100%;
+	height: 73%;
+}
+
+#systematicDiagramContent #grpNameTag [id^='nameTag'][data-onoff='ON']>rect[fill] {
+	fill: #206088;
+}
+
+#systematicDiagramContent #grpNameTag [id^='nameTag'][data-onoff='ON']>rect[stroke] {
+	stroke: #FFFFFF;
+}
+
+#systematicDiagramContent #grpNameTag [id^='nameTag'][data-onoff='ON'] [id$='NumberBg'] {
+	fill: #FFFFFF;
+}
+
+#systematicDiagramContent #grpNameTag [id^='nameTag'][data-onoff='ON'] [id$='NumberText'] {
+	fill: #206088;
+}
+
+#systematicDiagramContent #grpNameTag [id^='nameTag'][data-onoff='ON']>[id^='nameTag'][id$='Text'] {
+	fill: #FFFFFF;
+}
+
+#systematicDiagramContent #grpPump [id^='pump'][id*='OnOff-'][data-onoff='ON'] {
+	fill: #2ECCEF;
+	fill-opacity: 1;
+	stroke: #2ECCEF;
+}
+
+#systematicDiagramContent #grpPump [id^='pump'][id$='Box'][data-onoff='ON'] [id$='IconBgBottom'] {
+	fill: #59C7F2;
+}
+
+#systematicDiagramContent .systematic-diagram-bottom {
+	width: 100%;
+	height: 26%;
+}
+
+#systematicDiagramContent .systematic-diagram-bottom-table {
+	width: 100%;
+	height: 100%;
+}
+
+#systematicDiagramContent .systematic-diagram-bottom-table thead {
+	height: 20%;
+	background: #5AB3FD33;
+	border-top: 0.2rem solid #5AB3FD;
+	border-bottom: 0.2rem solid #5AB3FD;
+}
+
+#systematicDiagramContent .systematic-diagram-bottom-table tbody tr {
+	height: calc(( 100% - 20%)/3);
+	background: #364C61;
+	border-bottom: 0.1rem solid #FDFDFD;
+}
+
+#systematicDiagramContent .systematic-diagram-bottom-table :where(th, td),
+#systematicDiagramContent .systematic-diagram-bottom-table :where(th, td) > span {
+	color: #FDFDFD;
+	font-size: 1.2rem;
+	text-align: center;
+}
+
+#systematicDiagramContent .systematic-diagram-bottom-table td:first-child
+	{
+	width: 7%;
+}
+
+#systematicDiagramContent .systematic-diagram-bottom-table :where(th, td):not(:first-child) {
+	width: calc((100% - 7%) / 9);
+}
+
+#systematicDiagramContent .systematic-diagram-bottom-table td.table-col-hover,
+#systematicDiagramContent .systematic-diagram-bottom-table td.table-col-hover > span
+	{
+	font-size: 1.6rem;
+}

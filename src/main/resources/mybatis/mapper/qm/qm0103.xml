@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsan.web.qm.mapper.Qm0103Mapper">
+
+	<resultMap type="com.dsan.web.qm.vo.RuleVO" id="RuleVo">
+		<result property="rule_id" column="RULE_ID" />
+		<result property="rule_nm" column="RULE_NM" />
+		<result property="rule_cn" column="RULE_CN" jdbcType="CLOB" javaType="java.lang.String" />
+		<result property="rule_desc" column="RULE_DESC" />
+		<result property="rule_se" column="RULE_SE" />
+	</resultMap>
+
+
+	<select id="getRuleList" resultMap="RuleVo">
+		SELECT
+			RULE_ID,
+			RULE_NM,
+			RULE_CN,
+			RULE_DESC,
+			RULE_SE
+		FROM
+			RDIQCRULEMNG_TB
+	</select>
+
+
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsan.web.qm.mapper.Qm0101Mapper">
+	<select id="getDataQcHstyList" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			TO_CHAR(REVISN_DT, 'YYYY-MM-DD HH24:MI:SS') AS REVISN_DT,
+			REGEXP_REPLACE(DATA_SAVE_DT, '(.{4})(.{2})(.{2})(.{2})(.{2})(.{2})', '\1-\2-\3\ \4:\5:\6') AS DATA_SAVE_DT,
+			TAGSN,
+			#{tag_nm} AS TAG_NM,
+			LAST_VALUE,
+			OLD_VALUE,
+			REVISN_RESN,
+			REVISN_REMARK
+		FROM
+			RDIREVISNLOG_TB L
+		WHERE
+			TAGSN = (
+				SELECT
+					TAGSN
+				FROM
+					RDITAG_TB
+				WHERE
+					TAG_NM = #{tag_nm}
+			)
+			<if test="dest != null">
+			AND REVISN_REMARK = #{dest}
+			</if>
+			AND REPLACE(REPLACE(REPLACE(#{from_dt}, '-', ''), ' ', ''), ':', '') <![CDATA[<=]]> DATA_SAVE_DT
+			AND DATA_SAVE_DT <![CDATA[<=]]> REPLACE(REPLACE(REPLACE(#{to_dt}, '-', ''), ' ', ''), ':', '')
+		ORDER BY
+			DATA_SAVE_DT DESC,
+			REVISN_DT
+	</select>
+	
+	<insert id="insertDataQcHsty" parameterType="list">
+		MERGE INTO RDIREVISNLOG_TB Q
+		USING (
+			<foreach collection="list" item="item" index="idx" separator="union">
+				SELECT 
+					SYSDATE AS REVISN_DT,
+					REPLACE(REPLACE(REPLACE(#{item.data_dt}, '-', ''), ' ', ''), ':', '') AS DATA_SAVE_DT, 
+					 (SELECT TAGSN FROM RDITAG_TB WHERE TAG_NM = #{item.tag_nm}) AS TAGSN, 
+					<if test="item.tag_bfr_vl == null">
+						null AS OLD_VALUE,
+					</if>
+					<if test="item.tag_bfr_vl != null">
+						#{item.tag_bfr_vl} AS OLD_VALUE,
+					</if>
+					#{item.tag_aft_vl} AS LAST_VALUE,
+					#{item.revisn_resn} AS REVISN_RESN,
+					#{item.revisn_remark} AS REVISN_REMARK
+				FROM DUAL
+			</foreach>	
+		) N
+		ON (
+			Q.TAGSN = N.TAGSN
+			AND Q.REVISN_DT = N.REVISN_DT
+			AND Q.DATA_SAVE_DT = N.DATA_SAVE_DT
+		)
+		WHEN MATCHED THEN 
+			UPDATE SET Q.OLD_VALUE = N.OLD_VALUE, Q.LAST_VALUE = N.LAST_VALUE, Q.REVISN_RESN = N.REVISN_RESN, Q.REVISN_REMARK = N.REVISN_REMARK
+		WHEN NOT MATCHED THEN
+			INSERT(REVISN_DT, DATA_SAVE_DT, TAGSN, OLD_VALUE, LAST_VALUE, REVISN_RESN, REVISN_REMARK)
+			VALUES(N.REVISN_DT, N.DATA_SAVE_DT, N.TAGSN, N.OLD_VALUE, N.LAST_VALUE, N.REVISN_RESN, N.REVISN_REMARK)
+	</insert>
+	
+</mapper>

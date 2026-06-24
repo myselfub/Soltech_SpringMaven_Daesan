@@ -1,0 +1,10 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Oct 31 17:51:43 KST 2024
+@default-egovframe2-http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1730364703370
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact net.sf.ehcache\:ehcache-terracotta\:pom\:2.1.1 from/to mvn2 (http\://repo1.maven.org/maven2/)\: The operation was cancelled.
+http\://www.egovframe.go.kr/maven/.error=Could not transfer artifact net.sf.ehcache\:ehcache-terracotta\:pom\:2.1.1 from/to egovframe (http\://www.egovframe.go.kr/maven/)\: The operation was cancelled.
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1730364703357
+http\://maven.egovframe.kr\:8080/maven/.error=Could not transfer artifact net.sf.ehcache\:ehcache-terracotta\:pom\:2.1.1 from/to egovframe2 (http\://maven.egovframe.kr\:8080/maven/)\: The operation was cancelled.
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1730364703376
+@default-egovframe-http\://www.egovframe.go.kr/maven/.lastUpdated=1730364703364
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact net.sf.ehcache\:ehcache-terracotta\:pom\:2.1.1 from/to central (https\://repo.maven.apache.org/maven2)\: The operation was cancelled.

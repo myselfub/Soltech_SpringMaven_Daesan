@@ -1,0 +1,559 @@
+@charset "UTF-8";
+
+/*
+#Graphics3{
+  background-image: url(../../../images/view/db/db0103/contents3/BG03.png);
+}*/
+
+/*공정도 시설물(상단 flow)*/
+.Cflow1 {
+	position: absolute;
+	top: 76px;
+	left: 180px;
+	width: 176px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F1.png);
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow1:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata1.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+.Cflow2 {
+	position: absolute;
+	top: 76px;
+	left: 394px;
+	width: 174px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F2.png);
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow2:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata2.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+.Cflow3 {
+	position: absolute;
+	top: 76px;
+	left: 606px;
+	width: 176px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F3.png);
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow3:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata3.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+.Cflow4 {
+	position: absolute;
+	top: 76px;
+	left: 820px;
+	width: 176px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F4.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow4:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata4.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+.Cflow5 {
+	position: absolute;
+	top: 76px;
+	left: 1035px;
+	width: 173px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F5.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow5:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata5.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+.Cflow6 {
+	position: absolute;
+	top: 227px;
+	left: 1243px;
+	width: 184px;
+	height: 166px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F6.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+
+.Cflow7 {
+	position: absolute;
+	top: 76px;
+	left: 1246px;
+	width: 177px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F7.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow7:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata7.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+.Cflow8 {
+	position: absolute;
+	top: 76px;
+	left: 1461px;
+	width: 174px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F8.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow8:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata8.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+.Cflow9 {
+	position: absolute;
+	top: 76px;
+	left: 1673px;
+	width: 176px;
+	height: 168px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_F9.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.Cflow9:hover {
+	content:
+		url(../../../images/view/db/db0103/contents3/hover/BG03_Fdata9.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+	transform-origin: 50% 100%;
+}
+
+/*시설물 flow hover시 관련 데이터 팝업*/
+.Cflow_data1, .Cflow_data2, .Cflow_data3, .Cflow_data4, .Cflow_data5,
+	.Cflow_data7, .Cflow_data8, .Cflow_data9 {
+	display: none;
+}
+
+.Cflow1:hover ~ .Cflow_data1 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 160px;
+	width: 422px;
+	height: 182px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata1.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+.Cflow2:hover ~ .Cflow_data2 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 310px;
+	width: 343px;
+	height: 214px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata2.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+.Cflow3:hover ~ .Cflow_data3 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 520px;
+	width: 350px;
+	height: 150px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata3.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+.Cflow4:hover ~ .Cflow_data4 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 770px;
+	width: 278px;
+	height: 214px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata4.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+.Cflow5:hover ~ .Cflow_data5 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 974px;
+	width: 296px;
+	height: 142px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata5.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+.Cflow7:hover ~ .Cflow_data7 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 1228px;
+	width: 214px;
+	height: 182px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata7.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+.Cflow8:hover ~ .Cflow_data8 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 1441px;
+	width: 214px;
+	height: 182px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata8.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+.Cflow9:hover ~ .Cflow_data9 {
+	display: block;
+	position: absolute;
+	top: 252px;
+	left: 1660px;
+	width: 201px;
+	height: 118px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_Fdata9.png);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(6px);
+	z-index: 11;
+}
+
+/*시설물 (상단 box)*/
+/*전전처리(DAF)*/
+.content1 {
+	position: absolute;
+	top: 423px;
+	left: 486px;
+	width: 241px;
+	height: 152px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_1.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.content1:hover {
+	content: url(../../../images/view/db/db0103/contents3/hover/BG03_H1.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+}
+
+/*전전처리(DMGF)*/
+.content2 {
+	position: absolute;
+	top: 420px;
+	left: 755px;
+	width: 243px;
+	height: 152px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_2.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.content2:hover {
+	content: url(../../../images/view/db/db0103/contents3/hover/BG03_H2.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+}
+
+/*에너지 회수장치*/
+.content3 {
+	position: absolute;
+	top: 420px;
+	left: 1032px;
+	width: 239px;
+	height: 149px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_3.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.content3:hover {
+	content: url(../../../images/view/db/db0103/contents3/hover/BG03_H3.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+}
+
+/*SWRO*/
+.content4 {
+	position: absolute;
+	top: 420px;
+	left: 1305px;
+	width: 239px;
+	height: 149px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_4.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.content4:hover {
+	content: url(../../../images/view/db/db0103/contents3/hover/BG03_H4.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+}
+
+/*BWRO*/
+.content5 {
+	position: absolute;
+	top: 420px;
+	left: 1575px;
+	width: 239px;
+	height: 149px;
+	content: url(../../../images/view/db/db0103/contents3/build/BG03_5.png);
+	background-repeat: no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.content5:hover {
+	content: url(../../../images/view/db/db0103/contents3/hover/BG03_H5.png);
+	transition: transform 0.3s ease;
+	transform: scale(1.05);
+}
+
+/*시설물 hover시 관련 데이터 팝업*/
+.Cdata1, .Cdata2, .Cdata3, .Cdata4 {
+	display: none;
+}
+
+.content1:hover ~ .Cdata1 {
+	display: block;
+	position: absolute;
+	top: 398px;
+	left: 720px;
+	width: 936px;
+	height: 424px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_text01.png);
+	background-repeat: no-repeat;
+	z-index: 11;
+}
+
+.content2:hover ~ .Cdata2 {
+	display: block;
+	position: absolute;
+	top: 398px;
+	left: 990px;
+	width: 930px;
+	height: 422px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_text02.png);
+	background-repeat: no-repeat;
+	z-index: 11;
+}
+
+.content3:hover ~ .Cdata3 {
+	display: block;
+	position: absolute;
+	top: 309px;
+	left: 285px;
+	width: 764px;
+	height: 629px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_text03.png);
+	background-repeat: no-repeat;
+	z-index: 11;
+}
+
+.content4:hover ~ .Cdata4, .content5:hover ~ .Cdata4 {
+	display: block;
+	position: absolute;
+	top: 138px;
+	left: 559px;
+	width: 765px;
+	height: 801px;
+	content:
+		url(../../../images/view/db/db0103/contents3/data/BG03_text04.png);
+	background-repeat: no-repeat;
+	z-index: 11;
+}
+
+/*하단 단면도, 데이터*/
+.Cbtn {
+	position: relative;
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+label {
+	position: absolute;
+	top: 584px;
+	padding: 0.25rem 0.75rem;
+	color: #7ACDFF;
+	border: 1px solid #7ACDFF;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 5px;
+	font-size: 1.15rem;
+	font-family: 'Pretendard-SemiBold';
+	z-index: 10;
+	cursor: pointer;
+}
+
+label[for="select1"] {
+	left: 45px;
+}
+
+label[for="select2"] {
+	left: 118px;
+}
+
+.radio:checked+label {
+	background-color: #128AD2;
+	border: 1px solid #128AD2;
+	color: #fff;
+}
+
+.image-container {
+	width: 1736px;
+	height: 307px;
+	position: absolute;
+	top: 618px;
+	left: 43px;
+	z-index: 10;
+}
+
+.image-container img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/* object-fit: cover;*/
+	display: none;
+}
+
+#select1:checked ~ .image-container .image1 {
+	display: block;
+}
+
+#select1:checked ~ .image-container .image2 {
+	display: none;
+}
+
+#select2:checked ~ .image-container .image1 {
+	display: none;
+}
+
+#select2:checked ~ .image-container .image2 {
+	display: block;
+}
+
+.image-container .image1 {
+	display: block;
+}
+
+.content-gif {
+	position: absolute;
+	content: url(../../../images/view/db/db0103/contents3/line.gif);
+	z-index: 9;
+	width: 120px;
+	height: 19px;
+	top: 177px;
+}
+
+.content-gif2 {
+	position: absolute;
+	content: url(../../../images/view/db/db0103/contents3/line.gif);
+	z-index: 9;
+	width: 120px;
+	height: 19px;
+	top: 248px;
+	transform: rotate(90deg);
+}
+
+.content-gif3 {
+	position: absolute;
+	content: url(../../../images/view/db/db0103/contents3/line.gif);
+	z-index: 9;
+	width: 120px;
+	height: 19px;
+	top: 248px;
+	transform: rotate(270deg);
+}
+
+.content-gif4 {
+	position: absolute;
+	content: url(../../../images/view/db/db0103/contents3/line.gif);
+	z-index: 9;
+	width: 120px;
+	height: 19px;
+	top: 248px;
+	transform: rotate(180deg);
+}

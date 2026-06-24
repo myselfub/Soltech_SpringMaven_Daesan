@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.tmax.tibero.jdbc.TbDriver"></property>
+		<!-- ST -->
+		<property name="url" value="jdbc:tibero:thin:@[DBIP]:8629:[DBNAME]"></property>
+		<!-- DSAN -->
+<!-- 		<property name="url" value="jdbc:tibero:thin:@[DBIP]:8629:[DBNAME]"></property> -->
+		<property name="username" value="[DBUSER]"></property>
+		<property name="password" value="[DBPASSWORD]"></property>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:mybatis/mapper/**/*.xml"></property>
+	</bean>
+
+	<bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.dsan.web.**.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<!--
+	<bean id="mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.dsan.web.mapper.**" />
+	</bean> -->
+</beans>

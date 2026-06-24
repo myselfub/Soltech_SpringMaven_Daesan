@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsan.web.ai.mapper.Ai0102Mapper">
+	<resultMap type="com.dsan.web.ai.vo.EvntVO" id="EvntMap">
+		<result property="evnt_id" column="EVNT_ID"/>
+		<result property="evnt_se" column="EVNT_SE"/>
+		<result property="evnt_se_nm" column="EVNT_SE_NM"/>
+		<result property="bgng_dt" column="BGNG_DT"/> 
+		<result property="end_dt" column="END_DT"/>
+		<result property="evnt_cn" column="EVNT_CN"/>
+		<result property="evnt_cn2" column="EVNT_CN2"/>
+		<result property="wrkr" column="WRKR"/>
+		<result property="atch_file_id" column="ATCH_FILE_ID"/>
+		<result property="procs_id" column="PROCS_ID"/>
+		<result property="procs_nm" column="PROCS_NM"/> 
+		<result property="fclt_id" column="FCLT_ID"/> 
+		<result property="fclt_nm" column="FCLT_NM"/>
+		<result property="fclt_dtl_id" column="FCLT_DTL_ID"/>
+		<result property="fclt_dtl_nm" column="FCLT_DTL_NM"/>
+	</resultMap>
+
+	<select id="getFcltDList" parameterType="java.util.List" resultType="hashmap">
+		SELECT CD_SE, CD_ID, CD_NM, CD_DESC
+		FROM RDICMMNCD_TB 
+		WHERE CD_SE IN (
+			<foreach collection="list" item="item" separator=",">
+				#{item}
+			</foreach>
+		)
+		ORDER BY CD_SE, CD_SN
+	</select>
+
+	<select id="getEvntList2" parameterType="hashmap" resultMap="EvntMap">
+		SELECT
+			EVNT_ID,
+			EVNT_SE,
+			(SELECT CD_NM FROM RDICMMNCD_TB WHERE CD_SE = 'CD100' AND CD_ID = EVNT_SE) AS EVNT_SE_NM, 
+			REGEXP_REPLACE("BGNG_DT", '(.{4})(.{2})(.{2})(.{2})(.{2})(.{2})', '\1-\2-\3 \4:\5') AS BGNG_DT , 
+			REGEXP_REPLACE("END_DT", '(.{4})(.{2})(.{2})(.{2})(.{2})(.{2})', '\1-\2-\3 \4:\5') AS END_DT ,  
+			EVNT_CN, EVNT_CN2, WRKR, ATCH_FILE_ID,
+			PROCS_ID, 
+			(SELECT PROCS_NM FROM RDIPROCSINFO_TB WHERE PROCS_ID = E.PROCS_ID) AS PROCS_NM,
+			FCLT_ID, 
+			(SELECT CD_NM FROM RDICMMNCD_TB WHERE CD_SE = 'CD101' AND CD_ID = FCLT_ID) AS FCLT_NM,
+			FCLT_DTL_ID, 
+			(
+				SELECT CD_NM FROM RDICMMNCD_TB 
+				WHERE CD_SE = E.FCLT_ID
+				AND CD_ID = E.FCLT_DTL_ID 
+			) AS FCLT_DTL_NM
+		FROM RDIEVNTMNG_TB E
+		WHERE 1=1
+			<if test='!evnt_se.equals("*")'>
+				AND EVNT_SE = #{evnt_se}
+			</if>
+			<if test='!procs_id.equals("*")'>
+				AND PROCS_ID = #{procs_id}
+			</if>
+			<choose>
+				<when test="fclt_dtl_list.size == 0">
+					<foreach collection="fclt_list" item="item" open="AND FCLT_ID IN (" close=")" separator=",">
+						#{item}
+					</foreach>
+				</when>
+				<otherwise>
+					<foreach collection="fclt_dtl_list" item="item" open="AND (" close=")" separator="or">
+						FCLT_ID = #{item.fclt} AND FCLT_DTL_ID = #{item.fclt_dtl}
+					</foreach>
+				</otherwise>
+			</choose>
+			AND (
+				(BGNG_DT <![CDATA[<=]]> #{bgng_dt} AND #{bgng_dt} <![CDATA[<=]]> END_DT)
+				OR
+				(BGNG_DT <![CDATA[<=]]> #{end_dt} AND #{end_dt} <![CDATA[<=]]> END_DT)
+				OR
+				(#{bgng_dt} <![CDATA[<=]]> BGNG_DT AND END_DT <![CDATA[<=]]> #{end_dt})
+			)
+		ORDER BY BGNG_DT, LAST_MDFCN_DT
+	</select>
+</mapper>

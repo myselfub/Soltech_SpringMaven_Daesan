@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계통도</title>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/view/db0103/contents2.css?ver=1.1">
+</head>
+<body>
+	<div class="contentBox">
+		<canvas id="Graphics" style="cursor: default;"></canvas>
+		<div class="content"
+			style="position: relative; top: -100%; height: 100%;">
+			<img class="Cline">
+			<div class="nameTag">
+				<!-- 취수 설비 -->
+				<img class="tag01"
+					onclick="showPop('CS', 'width=1810, height=945, top=130, left=20, resizable=no ,scrollbars=no, status=no, location=no');">
+				<div class="Thover01"></div>
+				<!-- 전전처리 -->
+				<img class="tag02"
+					onclick="showPop('DAF', 'width=1810, height=945, top=130, left=20, resizable=no ,scrollbars=no, status=no, location=no');">
+				<div class="Thover02"></div>
+				<!-- 전처리 -->
+				<img class="tag03"
+					onclick="showPop('DMGF', 'width=1810, height=945, top=130, left=20, resizable=no ,scrollbars=no, status=no, location=no');">
+				<div class="Thover03"></div>
+				<!-- SWRO -->
+				<img class="tag04"
+					onclick="showPop('RO', 'width=1810, height=945, top=130, left=20, resizable=no ,scrollbars=no, status=no, location=no');">
+				<div class="Thover04"></div>
+				<!-- BWRO -->
+				<img class="tag05"
+					onclick="showPop('RO', 'width=1810, height=945, top=130, left=20, resizable=no ,scrollbars=no, status=no, location=no');">
+				<div class="Thover05"></div>
+				<!-- 폐수처리 설비 -->
+				<img class="tag06"
+					onclick="showPop('PS', 'width=1810, height=945, top=130, left=20, resizable=no ,scrollbars=no, status=no, location=no');">
+				<div class="Thover06"></div>
+				<!-- 탈수 설비 -->
+				<img class="tag07"
+					onclick="showPop('PS', 'width=1810, height=945, top=130, left=20, resizable=no ,scrollbars=no, status=no, location=no');">
+				<div class="Thover07"></div>
+				<div class="grid-data-box Gdata1">
+					<div id="Gdata1_1" class="grid-data-val">123,123</div>
+					<div id="Gdata1_2" class="grid-data-val">3,123</div>
+					<div id="Gdata1_3" class="grid-data-val">ON</div>
+				</div>
+				<div id="" class="grid-data-box Gdata2">
+					<div id="Gdata2_1" class="grid-data-val">123,123</div>
+					<div id="Gdata2_2" class="grid-data-val">3,123</div>
+					<div id="Gdata2_3" class="grid-data-val">ON</div>
+				</div>
+				<div id="" class="grid-data-box Gdata3">
+					<div id="Gdata3_1" class="grid-data-val">123,123</div>
+					<div id="Gdata3_2" class="grid-data-val">3,123</div>
+					<div id="Gdata3_3" class="grid-data-val">ON</div>
+				</div>
+				<div id="" class="grid-data-box Gdata4">
+					<div id="Gdata4_1" class="grid-data-val">123,123</div>
+					<div id="Gdata4_2" class="grid-data-val">3,123</div>
+					<div id="Gdata4_3" class="grid-data-val">OFF</div>
+				</div>
+				<div id="" class="grid-data-box Gdata5">
+					<div id="Gdata5_1" class="grid-data-val">123,123</div>
+					<div id="Gdata5_2" class="grid-data-val">3,123</div>
+					<div id="Gdata5_3" class="grid-data-val">ON</div>
+				</div>
+				<div id="" class="grid-data-box Gdata6">
+					<div id="Gdata6_1" class="grid-data-val">123,123</div>
+					<div id="Gdata6_2" class="grid-data-val">3,123</div>
+					<div id="Gdata6_3" class="grid-data-val">ON</div>
+				</div>
+				<div id="" class="grid-data-box Gdata7">
+					<div id="Gdata7_1" class="grid-data-val">123,123</div>
+					<div id="Gdata7_2" class="grid-data-val">3,123</div>
+					<div id="Gdata7_3" class="grid-data-val">ON</div>
+				</div>
+				<div id="" class="grid-data-box Gdata8">
+					<div id="Gdata8_1" class="grid-data-val">123,123</div>
+					<div id="Gdata8_2" class="grid-data-val">3,123</div>
+					<div id="Gdata8_3" class="grid-data-val">ON</div>
+				</div>
+				<div id="" class="grid-data-box Gdata9">
+					<div id="Gdata9_1" class="grid-data-val">123,123</div>
+					<div id="Gdata9_2" class="grid-data-val">3,123</div>
+					<div id="Gdata9_3" class="grid-data-val">ON</div>
+				</div>
+			</div>
+			<div class="contentP">
+				<div class="Cdata1">
+					<div class="Cdata_on"></div>
+				</div>
+				<div class="Cdata1_tooltip"></div>
+				<div class="Cdata2"></div>
+				<div class="Cdata2_tooltip"></div>
+				<div class="Cdata3">
+					<div class="Cdata_on"></div>
+				</div>
+				<div class="Cdata4"></div>
+				<div class="Cdata5">
+					<div class="Cdata_on"></div>
+				</div>
+				<div class="Cdata6"></div>
+				<div class="Cdata7">
+					<div class="Cdata_on"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>전전처리(DAF)</title>
+</head>
+<body>
+	<div class="main-contents-grid1" style="height: 100%; row-gap: 5px;">
+		<div class="main-contents-grid2" style="width: 100%; height: 45%; flex: 1 1 0;" >
+			<div class="data-box" style="flex-basis: 20%;">
+				<div class="title">전력 현황</div>
+				<div class="values">
+					<div class="value">
+						<p class="tit">실시간</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="RT_POWER">-</span>
+							<p class="unit">KW</p>
+						</div>
+
+					</div>
+					<div class="value">
+						<p class="tit">
+							<span>최대
+								<span id="maxTime">-</span>
+							</span>
+						</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="MAX_POWER">-</span>
+							<p class="unit">KW</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">소비량</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="USG_POWER">-</span>
+							<p class="unit">MWh</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">소비요금</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" id="PRC_POWER">-</span>
+							<p class="unit">원</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 35%;">
+				<div class="title">DAF 유입 수질</div>
+				<div style="display: flex; width: 100%; flex: 1 1 0;">
+					<div class="values" style="border-right: 1px dotted #233664; border-bottom-right-radius: unset; flex-basis: 50%;">
+						<div class="value">
+							<p class="tit">조류분석기</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.ALG101.F_CV" id="ALG101">-</span>
+								<p class="unit">μg/L</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">오일감지기</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.OIL101.F_CV" id="OIL101">-</span>
+								<p class="unit">mg/L</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">산화환원전위차계</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.ORP101.F_CV" id="ORP101">-</span>
+								<p class="unit">mV</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">총유기탄소량계</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.TOC101.F_CV" id="TOC101">-</span>
+								<p class="unit">mg/L</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">염분도계</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.Sal101.F_CV" id="Sal101">-</span>
+								<p class="unit">psu</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">전기전도도</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.CE101.F_CV" id="CE101">-</span>
+								<p class="unit">μS/cm</p>
+							</div>
+						</div>
+					</div>
+					<div class="values" style="border-left: none; border-bottom-left-radius: unset; flex-basis: 50%;">
+						<div class="value">
+							<p class="tit">수소이온농도</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.Ph101.F_CV" id="Ph101">-</span>
+								<p class="unit">pH</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">탁도</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.TbE101.F_CV" id="TbE101">-</span>
+								<p class="unit">NTU</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">잔류염소</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.Cl2101.F_CV" id="Cl2101">-</span>
+								<p class="unit">mg/L</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">오염지수계</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.SS101.F_CV" id="Cl2101">-</span>
+								<p class="unit"></p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">부유물 농도계</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.SS101.F_CV" id="SS101">-</span>
+								<p class="unit">mg/L</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 35%;">
+				<div class="title">DAF</div>
+				<div style="display: flex; width: 100%; flex: 1 1 0;">
+					<div class="values" style="border-right: 1px dotted #233664; border-bottom-right-radius: unset; flex-basis: 50%;">
+						<div class="value-ttl">원수 저류조</div>
+						<div class="value img-item">
+							<p class="tit">유출 밸브</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.M111A_FO_STS.F_CV" id="M111A_STS"><img class="on-img"></span>
+								<span class="val" data-tag="CDSWSS.M111B_FO_STS.F_CV" id="M111B_STS"><img class="on-img"></span>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">수위 A</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.LIT201A.F_CV" id="LIT201A">-</span>
+								<p class="unit">m</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">수위 B</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.LIT201B.F_CV" id="LIT201B">-</span>
+								<p class="unit">m</p>
+							</div>
+						</div>
+						<div class="value-ttl">H2SO4</div>
+						<div class="value img-item">
+							<p class="tit">주입 펌프</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.M502A_RUN_STS.F_CV" id="M502A_STS"><img class="on-img"></span>
+								<span class="val" data-tag="CDSWSS.M502B_RUN_STS.F_CV" id="M502B_STS"><img class="on-img"></span>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">유출 압력</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.PIT503.F_CV" id="PIT503">-</span>
+								<p class="unit">kg/cm²</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">유출 유량</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.FIT501.F_CV" id="FIT501">-</span>
+								<p class="unit">m³/h</p>
+							</div>
+						</div>
+					</div>
+					<div class="values" style="border-left: none; border-bottom-left-radius: unset; flex-basis: 50%;">
+						<div class="value-ttl">NaOCl</div>
+						<div class="value img-item">
+							<p class="tit">주입 펌프</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.M519A_RUN_STS.F_CV" id="M519A_STS"><img class="on-img"></span>
+								<span class="val" data-tag="CDSWSS.M519B_RUN_STS.F_CV" id="M519B_STS"><img class="on-img"></span>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">유출 압력</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.PIT523.F_CV" id="PIT523">-</span>
+								<p class="unit">kg/cm²</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">유출 유량</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.FIT521.F_CV" id="FIT521">-</span>
+								<p class="unit">m³/h</p>
+							</div>
+						</div>
+						<div class="value-ttl">FeCl</div>
+						<div class="value img-item">
+							<p class="tit">주입 펌프</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.M505A_RUN_STS.F_CV" id="M505A_STS"><img class="on-img"></span>
+								<span class="val" data-tag="CDSWSS.M505B_RUN_STS.F_CV" id="M505B_STS"><img class="on-img"></span>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">유출 압력</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.PIT513.F_CV" id="PIT513">-</span>
+								<p class="unit">kg/cm²</p>
+							</div>
+						</div>
+						<div class="value">
+							<p class="tit">유출 유량</p>
+							<div style="display: flex; column-gap: 5px;">
+								<span class="val" data-tag="CDSWSS.FIT511.F_CV" id="FIT511">-</span>
+								<p class="unit">m³/h</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data-box" style="flex-basis: 20%;">
+				<div class="title">운전 현황</div>
+				<div class="values">
+					<div class="value-ttl">바이패스</div>
+					<div class="value img-item">
+						<p class="tit">수문</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.M208_FO_STS.F_CV" id="M208_STS"><img class="on-img"></span>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">수로 수위</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.LIT202.F_CV" id="LIT202">-</span>
+							<p class="unit">m</p>
+						</div>
+					</div>
+					<div class="value-ttl">포화공기탱크</div>
+					<div class="value">
+						<p class="tit">수위</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.LIT204A.F_CV" id="LIT204A">-</span>
+							<p class="unit">m</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">압력</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.LIT211.F_CV" id="LIT211">-</span>
+							<p class="unit">kg/cm²</p>
+						</div>
+					</div>
+					<div class="value-ttl">반송펌프</div>
+					<div class="value">
+						<p class="tit">유출유량 A</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.FIT203A.F_CV" id="FIT203A">-</span>
+							<p class="unit">m³/h</p>
+						</div>
+					</div>
+					<div class="value">
+						<p class="tit">유출압력 A</p>
+						<div style="display: flex; column-gap: 5px;">
+							<span class="val" data-tag="CDSWSS.PIT203A.F_CV" id="PIT203A">-</span>
+							<p class="unit">kg/cm²</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main-contents-grid1" style="width: 100%; height: 55%;">
+			<div class="main-search-group">
+				<div class="com-search-unit">
+					<p>조회 일자</p>
+					<input type="date" id="stdDate">
+					<select id="sel_chart_type" onchange="initChart('chart_type');">
+						<option value="ACC">일 누적</option>
+						<option value="MAX">일 최대</option>
+						<option value="USG">일 소비량</option>
+					</select>
+					<select id="sel_chart_range" onchange="initChart();">
+						<option value="1">1개월</option><option value="3">3개월</option><option value="6">6개월</option>
+					</select>
+					<button class="find" onclick="search();"></button>
+
+				</div>
+				<div class="com-search-unit">
+
+				</div>
+			</div>
+			<div class="data-box">
+				<div style="width: 100%; height: 100%;">
+					<div id="container"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
